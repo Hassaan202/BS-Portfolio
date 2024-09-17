@@ -76,7 +76,7 @@ setNotDraggable();
 // smooth scroll
 const lenis = new Lenis()
 lenis.on('scroll', (e) => {
-  console.log(e)
+//   console.log(e)
 })
 function raf(time) {
   lenis.raf(time)
@@ -89,6 +89,21 @@ requestAnimationFrame(raf)
 const container=document.querySelector(".cont"); //outer container
 const projs=gsap.utils.toArray(".cont div");
 console.log(projs);
+
+let maxVal=0;
+let height=projs.forEach((val)=>{
+    if (val.getBoundingClientRect().height>maxVal){
+        maxVal=val.getBoundingClientRect().height;
+    }
+})
+let finalVal=0;
+let manageHorizontalScroll=()=>{
+    if (window.visualViewport.height>=maxVal){
+        finalVal=(window.visualViewport.height-maxVal)/2;
+        finalVal*=-1;
+    }
+}
+manageHorizontalScroll();
 
 let scrollTween=gsap.to(projs, {
     xPercent:-100*(projs.length-1),
