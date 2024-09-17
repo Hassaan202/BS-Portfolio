@@ -1,0 +1,228 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+main{
+    background-color: #F7F7FF;
+}
+.blobs-filter{
+    /* sets the height of this and the next in js */
+    position: relative;
+    bottom: 0;
+    left:0px;
+    overflow: hidden;
+    clip-path: inset(0, 0, 0, 0);
+    height: auto;
+}
+.blobs{
+    position: absolute;
+    filter: blur(140px);
+    height: auto;
+}
+.blobs div{
+    width:400px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: fixed;
+    top:0px;
+    left:0px;
+}
+@media (0px<=width<200px){
+    .blobs div{
+        display: none;
+    }
+}
+@media (200px<=width<400px){
+    .blobs div{
+        width: 100px;
+    }
+}
+@media (400px<=width<800px){
+    .blobs div{
+        width: 200px;
+    }
+}
+@media (min-width:800px){
+    .blobs div{
+        width: 400px;
+    }
+}
+
+.center{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+.mainHeading{
+    font-weight:400;
+    font-size:4rem;
+}
+.lg{
+    font-size: 1.5rem;
+}
+.large-text{
+    font-size: 2rem;
+}
+#navbarText ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#nametag{
+    user-select: none;
+}
+.heading{
+    font-weight: 400;
+    font-size: 3rem;
+    white-space: nowrap;
+}
+#aboutContainer{
+    background-color: #F7F7FF;
+}
+.section-style{
+    background-color: #1D1E18;
+    color: #F7F7FF;
+}
+.gradient-style{
+    background-image: linear-gradient(to right, #3306b9, #ef29cb, #9984D4) ;
+    background-clip: text;
+    color: transparent;
+}
+/* note that we cannot use the css variables directly in animation so use proprty */
+@property --angle{
+    syntax: "<angle>"; 
+    initial-value: 0deg;
+    inherits: false;
+}
+.profileImg{
+    background-image: conic-gradient(from var(--angle), #F7F7FF, #1D1E18, #3306b9, #ef29cb, #731963, #9984D4, #F7F7FF);
+    animation: spin 3s linear infinite;
+    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.profileImg img{
+    padding: 3px;
+}
+
+@keyframes spin {
+    from{
+        --angle:0deg;
+    }
+    to{
+        --angle:360deg;
+    }
+}
+.nowrap{
+    white-space: nowrap;
+}
+#skills-row div img{
+    max-width: 150px;
+    max-height: 150px;
+    filter:grayscale(100);
+    transition: transform 0.3s ease-in-out;
+}
+#skills-row div img:hover{
+    filter:grayscale(0);
+    transform: scale(1.2);
+}
+#contact-btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#contact-btns a{
+    color: #F7F7FF;
+    border: 1px solid #F7F7FF;
+    width: fit-content;
+    transition: background-color 0.5s, color 0.5s, transform 0.5s;
+}
+#contact-btns a:hover{
+    background-color: #F7F7FF;
+    color: #1D1E18;
+    transform: scale(1.05);
+}
+
+/* Lenis - smooth scrolling*/
+html.lenis, html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+
+.wrapper{
+    overflow-x: hidden;
+    position: relative;
+}
+.cont{
+    display: flex;
+    width:300vw;
+}
+.project{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    img{
+        object-fit: contain;
+        max-height: 85vh;
+        max-width:90vw;
+        border-radius: 2rem;
+        border: 2px solid #731963;
+    }
+
+    span{
+        font-size: x-large;
+        padding: 0.4rem;
+    }
+}
+
+.loader{
+    background-color: #1D1E18;
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.spinner{
+    height:10vh;
+    aspect-ratio: 1;
+    border: 5px solid white;
+    border-right: 5px solid #1D1E18;
+    border-radius: 50%;
+    animation-name: spinners;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes spinners {
+    from{
+        rotate: 0deg;
+    }
+    to{
+        rotate: 360deg;
+    }
+}
